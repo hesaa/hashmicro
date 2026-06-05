@@ -1,0 +1,159 @@
+{
+  "info": {
+    "name": "Hashmicro Test API",
+    "description": "Node.js Express TypeScript MVC - Hashmicro Technical Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "GET /health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "GET /api/products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/products?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /api/products (with search)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/products?page=1&limit=10&search=laptop",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" },
+                { "key": "search", "value": "laptop" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET /api/products/:id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/1"
+          }
+        },
+        {
+          "name": "POST /api/products",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/products",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop ASUS\",\n  \"description\": \"Laptop untuk kerja\",\n  \"price\": 12500000,\n  \"stock\": 50,\n  \"category\": \"electronics\"\n}"
+            }
+          }
+        },
+        {
+          "name": "PUT /api/products/:id",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/products/1",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop ASUS Updated\",\n  \"price\": 13000000\n}"
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/products/:id",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/products/1"
+          }
+        },
+        {
+          "name": "GET /api/products/stats",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/stats"
+          }
+        },
+        {
+          "name": "POST /api/products/discount",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/products/discount",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 12500000,\n  \"stock\": 60,\n  \"isMember\": true\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comparison",
+      "item": [
+        {
+          "name": "POST /api/comparison (sensitive)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/comparison",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input1\": \"ABBCD\",\n  \"input2\": \"Gallant Duck\",\n  \"type\": \"sensitive\"\n}"
+            }
+          }
+        },
+        {
+          "name": "POST /api/comparison (nonsensitive)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/comparison",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input1\": \"ABBCD\",\n  \"input2\": \"Gallant Duck\",\n  \"type\": \"nonsensitive\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
