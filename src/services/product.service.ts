@@ -11,9 +11,11 @@ export class ProductService {
     const skip = (page - 1) * limit;
     const [data, total] = await Promise.all([
       search
-        ? this.model.searchByName(search)
+        ? this.model.searchByName(search, { skip, take: limit })
         : this.model.findAll({ skip, take: limit }),
-      this.model.count(),
+      search
+        ? this.model.countByName(search)
+        : this.model.count(),
     ]);
     return { data, total, page, limit };
   }

@@ -39,8 +39,18 @@ export class ProductModel extends BaseModel<ProductData> {
     });
   }
 
-  async searchByName(keyword: string) {
+  async searchByName(keyword: string, options?: { skip?: number; take?: number }) {
     return this.prisma.product.findMany({
+      where: {
+        name: { contains: keyword },
+      },
+      skip: options?.skip || 0,
+      take: options?.take || 100,
+    });
+  }
+
+  async countByName(keyword: string) {
+    return this.prisma.product.count({
       where: {
         name: { contains: keyword },
       },
