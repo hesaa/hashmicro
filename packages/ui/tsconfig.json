@@ -1,0 +1,10 @@
+{
+  "extends": "@hashmicro/typescript-config/react-library.json",
+  "compilerOptions": {
+    "paths": {
+      "@hashmicro/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

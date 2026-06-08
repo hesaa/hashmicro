@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { ProductController } from "@/controllers/product.controller";
 import { validate } from "@/middleware/validate.middleware";
-import { createProductSchema, updateProductSchema } from "@/schemas/product.schema";
+import { createProductSchema, updateProductSchema } from "@hashmicro/shared-utils";
 
 const router = Router();
 const controller = new ProductController();

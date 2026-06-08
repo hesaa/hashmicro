@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { ComparisonController } from "@/controllers/comparison.controller";
 import { validate } from "@/middleware/validate.middleware";
-import { comparisonSchema } from "@/schemas/product.schema";
+import { comparisonSchema } from "@hashmicro/shared-utils";
 
 const router = Router();
 const controller = new ComparisonController();

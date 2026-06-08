@@ -17,3 +17,7 @@ export const comparisonSchema = z.object({
     message: "Type must be 'sensitive' or 'nonsensitive'",
   }),
 });
+
+export type CreateProductInput = z.infer<typeof createProductSchema>;
+export type UpdateProductInput = z.infer<typeof updateProductSchema>;
+export type ComparisonInput = z.infer<typeof comparisonSchema>;

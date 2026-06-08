@@ -1,4 +1,4 @@
-import { ComparisonType } from "@/types";
+import { ComparisonType } from "@hashmicro/shared-types";
 
 export class ComparisonService {
   compare(input1: string, input2: string, type: ComparisonType) {
