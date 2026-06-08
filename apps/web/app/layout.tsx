@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Inter, Roboto } from "next/font/google"
 
 import "@hashmicro/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { NavSidebar } from "@/components/nav-sidebar"
 import { cn } from "@hashmicro/ui/lib/utils";
 
 const robotoHeading = Roboto({subsets:['latin'],variable:'--font-heading'});
@@ -25,7 +26,12 @@ export default function RootLayout({
       className={cn("antialiased", fontMono.variable, "font-sans", inter.variable, robotoHeading.variable)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <div className="flex min-h-screen">
+            <NavSidebar />
+            <main className="flex-1 p-6">{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )
